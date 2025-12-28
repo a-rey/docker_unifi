@@ -11,12 +11,14 @@ RUN \
     apt-get update \
     && apt-get install -y --no-install-recommends \
       binutils \
+      coreutils \
+      adduser \
       jsvc \
       curl \
       gpg \
       libcap2 \
       logrotate \
-      openjdk-11-jre-headless \
+      openjdk-17-jre-headless \
     # allow for libssl1.1 to be installed for MongoDB 3.6
     && echo "deb http://security.ubuntu.com/ubuntu focal-security main" | tee /etc/apt/sources.list.d/focal-security.list \
     # install MongoDB 
@@ -27,9 +29,9 @@ RUN \
     && apt-get install -y --no-install-recommends \
       mongodb-org \
     # get current unifi version
-    && __V=$(curl -sX GET http://dl-origin.ubnt.com/unifi/debian/dists/stable/ubiquiti/binary-amd64/Packages | grep 'Version:' | cut -d' ' -f2 | cut -d'-' -f1) \
+    && __V=$(curl -ksX GET https://dl-origin.ubnt.com/unifi/debian/dists/stable/ubiquiti/binary-amd64/Packages | grep 'Version:' | cut -d' ' -f2 | cut -d'-' -f1) \
     # install unifi
-    && curl -o /tmp/unifi.deb -L "http://dl.ui.com/unifi/${__V}/unifi_sysvinit_all.deb" \
+    && curl -ko /tmp/unifi.deb -L "https://dl.ui.com/unifi/${__V}/unifi_sysvinit_all.deb" \
     && dpkg -i /tmp/unifi.deb \
     # make entry executable
     && chmod +x /docker-entrypoint.sh \

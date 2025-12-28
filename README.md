@@ -4,18 +4,11 @@ Docker image for the [Unifi Network Controller](https://unifi-network.ui.com/#un
 
 ![Unifi Logo](https://unifi-network.ui.com/logo192.png)
 
-## Install:
+## Hosting:
 
-- [Ubuntu amd64 ISO download](https://releases.ubuntu.com/22.04.3/ubuntu-22.04.3-live-server-amd64.iso)
+- [Ubuntu 24.04 LTS amd64 ISO download](https://releases.ubuntu.com/24.04/)
 - [Docker CE Install](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
 - [Docker Compose Install](https://docs.docker.com/compose/install/)
-
-## Versions:
-
-- Ubuntu `22.04 LTS`
-- Unifi Network Controller `v7.4.162`
-- MongoDB `v3.6.23`
-- openjdk `v11.0.20`
 
 ## Build:
 
