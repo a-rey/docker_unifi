@@ -1,5 +1,11 @@
 #!/bin/bash
 
-echo "[docker-entrypoint.sh] starting ..."
-echo "[docker-entrypoint.sh] user: $(id)"
-java $JAVA_OPTS -jar /usr/lib/unifi/lib/ace.jar start
+echo "[`date`][docker-entrypoint.sh] starting ..."
+echo "[`date`][docker-entrypoint.sh] user: $(id)"
+/usr/lib/unifi/bin/unifi.init start
+if [ $? -ne 0 ]; then
+  echo "[`date`][docker-entrypoint.sh] server startup error: $?"
+  exit 1
+fi
+echo "[`date`][docker-entrypoint.sh] server startup OK"
+tail -f /dev/null

@@ -1,6 +1,6 @@
 # Ubuntu Docker Unifi Network Controller
 
-Docker image for the [Unifi Network Controller](https://unifi-network.ui.com/#unifi) software
+Docker image for the [Unifi Network Application](https://community.ui.com/releases/UniFi-Network-Application-9-5-21/92266721-6758-4f33-b3bc-9d8b66f3c96e)
 
 ![Unifi Logo](https://unifi-network.ui.com/logo192.png)
 
@@ -31,8 +31,8 @@ After=docker.service
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=/usr/local/bin/docker-compose -f <path to your docker-compose.yml> up -d
-ExecStop=/usr/local/bin/docker-compose -f <path to your docker-compose.yml> down
+ExecStart=docker compose -f <path to your docker-compose.yml> up -d
+ExecStop=docker compose -f <path to your docker-compose.yml> down
 TimeoutStartSec=0
 
 [Install]
@@ -49,7 +49,7 @@ sudo systemctl enable unifi
 
 In `docker-compose.yml` you can customize the following environmental variables:
 
-- `JAVA_OPTS`: Extra command line flags to pass to the Java runtime when the Unifi application is started. For example, `"JAVA_OPTS=-Xmx1024M"` would set the runtime Java heap limit to 1024MB.
+- `UNIFI_JVM_OPTS`: Extra command line flags to pass to the Java runtime when the Unifi application is started. For example, `"UNIFI_JVM_OPTS=-Xmx1024M"` would set the runtime Java heap limit to 1024MB.
 
 In `docker-compose.yml` there are 3 volumes you can map out of the container to your docker host since the Unifi application is **not** running as `root`:
 

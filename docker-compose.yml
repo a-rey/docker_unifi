@@ -10,7 +10,7 @@ services:
       dockerfile: Dockerfile
     container_name: unifi-controller
     environment:
-      - "JAVA_OPTS="
+      - "UNIFI_JVM_OPTS="
     volumes:
       - unifi_data:/usr/lib/unifi/data:rw
       - unifi_logs:/usr/lib/unifi/logs:rw
